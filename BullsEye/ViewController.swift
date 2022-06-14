@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         slider.setMaximumTrackImage(trackRightResizable, for: .normal)
     }
     
-    @IBAction func showAlert() {        
+    @IBAction func showAlert() {
         let difference = abs(targetValue - currentValue)
         var points = 100 - difference
         
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         } else if difference < 5 {
             title = "You almost had it!"
             if difference == 1 {
-            points += 50 }
+                points += 50 }
         } else if difference < 10 {
             title = "Pretty good!"
         } else {
@@ -80,6 +80,12 @@ class ViewController: UIViewController {
         score = 0
         round = 0
         startNewRound()
+        
+        let transition = CATransition()
+        transition.type = CATransitionType.fade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
     }
     
     func startNewRound() {
